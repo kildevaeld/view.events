@@ -1,6 +1,6 @@
 {
   "name": "@viewjs/events",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "",
   "main": "./lib/index.js",
   "scripts": {
@@ -23,6 +23,6 @@
   "browser": "./dist/view.events.js",
   "typings": "./lib/index.d.ts",
   "dependencies": {
-    "@viewjs/utils": "~0.0.3"
+    "@viewjs/utils": "^1.0.0"
   }
 }
