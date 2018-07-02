@@ -12,7 +12,7 @@ module.exports = [
         output: {
             file: pkg.browser,
             format: 'umd',
-            name: 'view.events'
+            name: 'viewjs.events'
         },
         // external: ["@viewjs/view", "mixins.events", "equaljs"],
         // globals: {

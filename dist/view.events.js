@@ -1,7 +1,7 @@
 (function (global, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
     typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.view = global.view || {}, global.view.events = {})));
+    (factory((global.viewjs = global.viewjs || {}, global.viewjs.events = {})));
 }(this, (function (exports) { 'use strict';
 
     function callFunc(fn) {
