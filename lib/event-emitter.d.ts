@@ -21,4 +21,3 @@ export declare namespace EventEmitter {
     function throwError(error: Error): void;
     function executeListenerFunction(func: Event[], args?: any[]): void;
 }
-export {};

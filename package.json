@@ -23,6 +23,6 @@
   "browser": "./dist/view.events.js",
   "typings": "./lib/index.d.ts",
   "dependencies": {
-    "@viewjs/utils": "^0.0.2"
+    "@viewjs/utils": "~0.0.3"
   }
 }
