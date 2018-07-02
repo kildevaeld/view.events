@@ -1,65 +1,8 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports) :
-    typeof define === 'function' && define.amd ? define(['exports'], factory) :
-    (factory((global.viewjs = global.viewjs || {}, global.viewjs.events = {})));
-}(this, (function (exports) { 'use strict';
-
-    function callFunc(fn) {
-        var args = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : [];
-
-        var l = fn.length,
-            i = -1,
-            a1 = args[0],
-            a2 = args[1],
-            a3 = args[2],
-            a4 = args[3],
-            a5 = args[4];
-        switch (args.length) {
-            case 0:
-                while (++i < l) {
-                    fn[i].handler.call(fn[i].ctx);
-                }return;
-            case 1:
-                while (++i < l) {
-                    fn[i].handler.call(fn[i].ctx, a1);
-                }return;
-            case 2:
-                while (++i < l) {
-                    fn[i].handler.call(fn[i].ctx, a1, a2);
-                }return;
-            case 3:
-                while (++i < l) {
-                    fn[i].handler.call(fn[i].ctx, a1, a2, a3);
-                }return;
-            case 4:
-                while (++i < l) {
-                    fn[i].handler.call(fn[i].ctx, a1, a2, a3, a4);
-                }return;
-            case 5:
-                while (++i < l) {
-                    fn[i].handler.call(fn[i].ctx, a1, a2, a3, a4, a5);
-                }return;
-            default:
-                while (++i < l) {
-                    fn[i].handler.apply(fn[i].ctx, args);
-                }return;
-        }
-    }
-    var idCounter = 0;
-    function uniqueId() {
-        var prefix = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
-
-        return prefix + ++idCounter;
-    }
-    function isFunction(a) {
-        return typeof a === 'function';
-    }
-    function isEventEmitter(a) {
-        return a && isFunction(a.on) && isFunction(a.once) && isFunction(a.off) && isFunction(a.trigger);
-    }
-    function IsEventListener(a) {
-        return a && isFunction(a.listenTo) && isFunction(a.listenToOnce) && isFunction(a.stopListening);
-    }
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@viewjs/utils')) :
+    typeof define === 'function' && define.amd ? define(['exports', '@viewjs/utils'], factory) :
+    (factory((global.viewjs = global.viewjs || {}, global.viewjs.events = {}),global.viewjs.utils));
+}(this, (function (exports,utils) { 'use strict';
 
     var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
       return typeof obj;
@@ -273,10 +216,17 @@
         }
         EventEmitter.throwError = throwError;
         function executeListenerFunction(func, args) {
-            callFunc(func, args);
+            utils.callFunc(func, args);
         }
         EventEmitter.executeListenerFunction = executeListenerFunction;
     })(exports.EventEmitter || (exports.EventEmitter = {}));
+
+    function isEventEmitter(a) {
+        return a && utils.isFunction(a.on) && utils.isFunction(a.once) && utils.isFunction(a.off) && utils.isFunction(a.trigger);
+    }
+    function IsEventListener(a) {
+        return a && utils.isFunction(a.listenTo) && utils.isFunction(a.listenToOnce) && utils.isFunction(a.stopListening);
+    }
 
     function withEventListener(Base) {
         return function (_Base) {
@@ -304,7 +254,7 @@
                         id = void 0,
                         meth = void 0;
                     listeningTo = this._listeningTo || (this._listeningTo = {});
-                    id = obj.listenId || (obj.listenId = uniqueId());
+                    id = obj.listenId || (obj.listenId = utils.uniqueId());
                     listeningTo[id] = obj;
                     meth = once ? 'once' : 'on';
                     obj[meth](event, fn, ctx || this);
@@ -347,8 +297,6 @@
 
     exports.withEventEmitter = withEventEmitter;
     exports.withEventListener = withEventListener;
-    exports.callFunc = callFunc;
-    exports.uniqueId = uniqueId;
     exports.isEventEmitter = isEventEmitter;
     exports.IsEventListener = IsEventListener;
 
