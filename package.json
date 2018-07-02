@@ -8,7 +8,7 @@
     "build": "node ./node_modules/.bin/tsc; node ./node_modules/.bin/rollup -c"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
@@ -24,5 +24,9 @@
   "typings": "./lib/index.d.ts",
   "dependencies": {
     "@viewjs/utils": "^1.0.0"
+  },
+  "author": {
+    "name": "Rasmus Kildevæld",
+    "email": "rasmuskildevaed@gmail.com"
   }
 }
