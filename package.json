@@ -19,5 +19,8 @@
     "typescript": "^2.9.2"
   },
   "browser": "./dist/view.events.js",
-  "typings": "./lib/index.d.ts"
+  "typings": "./lib/index.d.ts",
+  "dependencies": {
+    "@viewjs/utils": "0.0.2"
+  }
 }
