@@ -1,5 +1,5 @@
 import { IEventEmitter, IEventListener } from './types';
-import {isFunction} from '@viewjs/utils';
+import { isFunction } from '@viewjs/utils';
 
 export function isEventEmitter(a: any): a is IEventEmitter {
     return a && ((isFunction(a.on) && isFunction(a.once) && isFunction(a.off) && isFunction(a.trigger)));
