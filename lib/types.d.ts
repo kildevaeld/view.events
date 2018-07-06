@@ -1,4 +1,3 @@
-export declare type Constructor<T> = new (...args: any[]) => T;
 /**
  * An EventListener listens for events on a EventEmitter
  *

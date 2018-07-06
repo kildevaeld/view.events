@@ -1,4 +1,5 @@
-import { IEventEmitter, Event, Constructor } from './types';
+import { IEventEmitter, Event } from './types';
+import { Constructor, Base } from '@viewjs/utils';
 /**event
  * Makes target, Base, an EventEmitter
  *
@@ -8,9 +9,7 @@ import { IEventEmitter, Event, Constructor } from './types';
  * @returns {(Constructor<IEventEmitter> & T)}
  */
 export declare function withEventEmitter<T extends Constructor<{}>>(Base: T): Constructor<IEventEmitter> & T;
-declare const EventEmitter_base: Constructor<IEventEmitter> & {
-    new (): {};
-};
+declare const EventEmitter_base: Constructor<IEventEmitter> & typeof Base;
 export declare class EventEmitter extends EventEmitter_base {
 }
 export declare namespace EventEmitter {

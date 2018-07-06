@@ -1,5 +1,5 @@
-import { IEventEmitter, EventHandler, Event, Constructor } from './types';
-import { callFunc } from '@viewjs/utils';
+import { IEventEmitter, EventHandler, Event } from './types';
+import { callFunc, Constructor, Base } from '@viewjs/utils';
 
 function removeFromListener(listeners: Event[], fn?: EventHandler, ctx?: any) {
     for (let i = 0; i < listeners.length; i++) {
@@ -128,7 +128,7 @@ export function withEventEmitter<T extends Constructor<{}>>(Base: T): Constructo
 
 
 
-export class EventEmitter extends withEventEmitter(class { }) { }
+export class EventEmitter extends withEventEmitter(Base) { }
 
 
 export namespace EventEmitter {

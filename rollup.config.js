@@ -9,18 +9,22 @@ module.exports = [
     // browser-friendly UMD build
     {
         input: './src/index.ts',
-        output: {
+        output: [{
             file: pkg.browser,
             format: 'umd',
             name: 'viewjs.events',
             globals: {
                 '@viewjs/utils': 'viewjs.utils'
             }
-        },
-         external: ["@viewjs/utils"],
+        }, {
+            file: pkg.module,
+            format: 'es'
+        }],
+        external: ["@viewjs/utils"],
         plugins: [
             typescript({
-                typescript: require('typescript')
+                typescript: require('typescript'),
+                module: 'es2015'
             }),
             resolve(), // so Rollup can find `ms`
             commonjs(), // so Rollup can convert `ms` to an ES module

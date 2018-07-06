@@ -198,13 +198,7 @@
         }
 
         return EventEmitter;
-    }(withEventEmitter(function () {
-        function _class2() {
-            classCallCheck(this, _class2);
-        }
-
-        return _class2;
-    }()));
+    }(withEventEmitter(utils.Base));
 
     (function (EventEmitter) {
         /**
