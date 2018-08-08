@@ -22,15 +22,15 @@ export function withTypedEventEmitter<T extends Constructor<IEventEmitter>>(Base
     return class extends Base {
 
         on<T>(e: EventConstructor<T> | string, callback: TypedEventHandler<T>, ctx?: any) {
-            return super.on(name, callback, ctx);
+            return super.on(e, callback, ctx);
         }
 
         once<T>(e: EventConstructor<T> | string, callback: TypedEventHandler<T>, ctx?: any) {
-            return super.once(name, callback, ctx);
+            return super.once(e, callback, ctx);
         }
 
         off<T>(e: EventConstructor<T> | string, callback: TypedEventHandler<T>, ctx?: any) {
-            return super.off(name, callback, ctx);
+            return super.off(e, callback, ctx);
         }
 
         trigger<T>(e: T | string, ...args: any[]) {

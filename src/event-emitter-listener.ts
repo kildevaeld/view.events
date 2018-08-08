@@ -1,7 +1,6 @@
-import { withEventEmitter } from './event-emitter';
+import { EventEmitter } from './event-emitter';
 import { withEventListener } from './event-listener';
 import { IEventEmitter, IEventListener } from './types';
-import { Base } from '@viewjs/utils';
+import { Constructor } from '@viewjs/utils';
 
-
-export class EventEmitterListener extends withEventListener(withEventEmitter(Base)) implements IEventEmitter, IEventListener { }
+export class EventEmitterListener extends withEventListener<Constructor<EventEmitter>>(EventEmitter) implements IEventEmitter, IEventListener { }
