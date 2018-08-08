@@ -2,7 +2,7 @@
 import { IEventListener, IEventEmitter, EventHandler } from './types';
 import { EventEmitter } from './event-emitter';
 import { isEventEmitter } from './helpers';
-import { uniqueId, Constructor } from '@viewjs/utils';
+import { uniqueId, Constructor, Base } from '@viewjs/utils';
 
 export function withEventListener<T extends Constructor<{}>>(Base: T): Constructor<IEventListener> & T {
     return class extends Base {
@@ -59,6 +59,9 @@ export function withEventListener<T extends Constructor<{}>>(Base: T): Construct
             if (typeof Base.prototype.destroy === 'function')
                 Base.prototype.destroy.call(this);
             this.stopListening();
+            return this;
         }
     }
 }
+
+export class EventListener extends withEventListener(Base) { }

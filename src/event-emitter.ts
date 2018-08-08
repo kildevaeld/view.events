@@ -118,6 +118,7 @@ export function withEventEmitter<T extends Constructor<{}>>(Base: T): Constructo
             if (typeof Base.prototype.destroy === 'function')
                 Base.prototype.destroy.call(this);
             this.off();
+            return this;
         }
 
         private _executeListener(func: Event[], args?: any[]) {

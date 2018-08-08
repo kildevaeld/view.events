@@ -1,4 +1,4 @@
-
+import { Destroyable } from '@viewjs/utils'
 
 /**
  * An EventListener listens for events on a EventEmitter
@@ -6,7 +6,7 @@
  * @export
  * @interface IEventListener
  */
-export interface IEventListener {
+export interface IEventListener extends Destroyable {
     listenTo(obj: IEventEmitter, event: any, fn: EventHandler, ctx?: any): this;
     listenToOnce(obj: IEventEmitter, event: any, fn: EventHandler, ctx?: any): this;
     stopListening(obj?: IEventEmitter, event?: any, fn?: EventHandler): this;
@@ -36,7 +36,7 @@ export interface Event {
  * @export
  * @interface IEventEmitter
  */
-export interface IEventEmitter {
+export interface IEventEmitter extends Destroyable {
 
     listeners?: Map<any, Event[]>
 
